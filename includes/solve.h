@@ -6,7 +6,7 @@
 /*   By: vfurmane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 08:13:22 by vfurmane          #+#    #+#             */
-/*   Updated: 2020/09/15 10:58:42 by vfurmane         ###   ########.fr       */
+/*   Updated: 2020/09/15 13:53:05 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@
 
 void	ft_put_board(int **board);
 
-int		ft_solve(int **board, int **args, int row, int size);
+int		ft_solve(int **board, int ***args, int row, int size, int num);
 
 #endif

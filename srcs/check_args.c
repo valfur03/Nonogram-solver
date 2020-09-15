@@ -6,18 +6,39 @@
 /*   By: vfurmane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 19:32:29 by vfurmane          #+#    #+#             */
-/*   Updated: 2020/09/14 21:52:48 by vfurmane         ###   ########.fr       */
+/*   Updated: 2020/09/15 15:26:17 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "check_args.h"
-#include <stdio.h> /* ===== DELETE ===== */
 
-int	ft_check_args(char *arg, int **tab)
+static int	ft_get_numbers(char *str)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 1;
+	while (str[i] && str[i] != ' ')
+	{
+		if (str[i++] == ',')
+		{
+			if (str[i] > '0' && str[i] < '9' )
+				count++;
+			else
+				return (0);
+		}
+	}
+	return (count);
+}
+
+int			ft_check_args(char *arg, int ***tab)
 {
 	int		i;
 	int		j;
+	int		k;
 	int		size;
+	int		numbers;
 	char	**str;
 
 	i = 0;
@@ -29,10 +50,19 @@ int	ft_check_args(char *arg, int **tab)
 		tab[i] = malloc(sizeof(**tab) * size);
 		while (j < size)
 		{
-			if (**str < '0' || **str > '9')
+			numbers = ft_get_numbers(*str);
+			if (!(tab[i][j] = malloc(sizeof(***tab) * (numbers + 1))))
 				return (0);
-			tab[i][j++] = ft_atoi(str);
-			(*str)++;
+			k = 0;
+			while (k < numbers && **str)
+			{
+				if (**str && (**str < '0' || **str > '9'))
+					return (0);
+				tab[i][j][k++] = ft_atoi(str);
+				if (**str)
+					(*str)++;
+			}
+			tab[i][j++][k] = 0;
 		}
 		i++;
 	}
