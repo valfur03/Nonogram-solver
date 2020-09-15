@@ -6,7 +6,7 @@
 /*   By: vfurmane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 19:21:18 by vfurmane          #+#    #+#             */
-/*   Updated: 2020/09/15 11:22:25 by vfurmane         ###   ########.fr       */
+/*   Updated: 2020/09/15 16:27:47 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 # include <stdlib.h>
 # include "str.h"
 
-int	ft_check_args(char *arg, int ***tab);
+int	*ft_check_args(char *arg, int ***tab);
 
 #endif

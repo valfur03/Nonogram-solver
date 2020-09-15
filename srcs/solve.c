@@ -6,10 +6,11 @@
 /*   By: vfurmane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 08:16:00 by vfurmane          #+#    #+#             */
-/*   Updated: 2020/09/15 15:51:37 by vfurmane         ###   ########.fr       */
+/*   Updated: 2020/09/15 19:33:42 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h> /* ===== DELETE ===== */
 #include "solve.h"
 
 static void	ft_put_block(int **board, int size, int row, int col)
@@ -30,39 +31,47 @@ static void	ft_rem_block(int **board, int size, int row, int col)
 		board[row][col + i++] = 0;
 }
 
-void		ft_put_board(int **board)
+void		ft_put_board(int **board, int *size)
 {
 	int	i;
 	int	j;
-	int	size;
 
 	i = 0;
-	size = 5;
-	while (i < size)
+	while (i < size[1])
 	{
 		j = 0;
-		while (j < size)
+		while (j < size[0])
 			write(1, ((board[i][j++]) ?  "#": "."), 1);
 		write(1, "\n", 1);
 		i++;
 	}
 }
 
-int			ft_solve(int **board, int ***args, int row, int size, int num)
+static int	ft_sum_row(int ***args, int row, int num)
 {
 	int	i;
-	int	col;
+	int	count;
 
 	i = 0;
+	count = 0;
+	while (args[1][row][num + i])
+		count += args[1][row][num + i++] + 1;
+	return (count - (i > 0));
+}
+
+int			ft_solve(int **board, int ***args, int row, int s_col, int *size, int num)
+{
+	int	col;
+
 	col = 0;
-	while (i < num)
-		col += args[1][row][i++] + 1;
-	while (col <= size - args[1][row][num])
+	col += args[1][row][num - 1] + (num > 0) + s_col;
+	while (col <= size[0] - args[1][row][num] && col <= size[0] - ft_sum_row(args, row, num))
 	{
 		ft_put_block(board, args[1][row][num], row, col);
-		if (row < size - 1 || args[1][row][num + 1] != 0)
+		if (row < size[1] - 1 || args[1][row][num + 1] != 0)
 		{
-			if (ft_solve(board, args, row + (args[1][row][num + 1] == 0), size,
+			if (ft_solve(board, args, row + (args[1][row][num + 1] == 0),
+				(args[1][row][num + 1] == 0) ? 0 : col, size,
 				(args[1][row][num + 1] == 0) ? 0 : num + 1))
 				return (1);
 			ft_rem_block(board, args[1][row][num], row, col);

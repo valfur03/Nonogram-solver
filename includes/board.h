@@ -6,7 +6,7 @@
 /*   By: vfurmane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 22:48:27 by vfurmane          #+#    #+#             */
-/*   Updated: 2020/09/14 22:49:08 by vfurmane         ###   ########.fr       */
+/*   Updated: 2020/09/15 16:24:47 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 #include <stdlib.h>
 
-int	**ft_init_board(int size);
+int	**ft_init_board(int x, int y);
 
 #endif

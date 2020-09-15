@@ -6,7 +6,7 @@
 /*   By: vfurmane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 19:32:29 by vfurmane          #+#    #+#             */
-/*   Updated: 2020/09/15 15:26:17 by vfurmane         ###   ########.fr       */
+/*   Updated: 2020/09/15 16:28:22 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,29 @@ static int	ft_get_numbers(char *str)
 	return (count);
 }
 
-int			ft_check_args(char *arg, int ***tab)
+int			*ft_check_args(char *arg, int ***tab)
 {
 	int		i;
 	int		j;
 	int		k;
-	int		size;
+	int		*size;
 	int		numbers;
 	char	**str;
 
 	i = 0;
-	size = 5;
 	str = &arg;
+	if (!(size = malloc(sizeof(*size) * 2)))
+		return (NULL);
+	size[0] = ft_atoi(str);
+	(*str)++;
+	size[1] = ft_atoi(str);
+	(*str)++;
 	while (i < 2)
 	{
 		j = 0;
-		tab[i] = malloc(sizeof(**tab) * size);
-		while (j < size)
+		if (!(tab[i] = malloc(sizeof(**tab) * size[i])))
+			return (NULL);
+		while (j < size[i])
 		{
 			numbers = ft_get_numbers(*str);
 			if (!(tab[i][j] = malloc(sizeof(***tab) * (numbers + 1))))
