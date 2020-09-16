@@ -6,7 +6,7 @@
 /*   By: vfurmane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 19:32:29 by vfurmane          #+#    #+#             */
-/*   Updated: 2020/09/15 16:28:22 by vfurmane         ###   ########.fr       */
+/*   Updated: 2020/09/16 16:34:58 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_get_numbers(char *str)
 	{
 		if (str[i++] == ',')
 		{
-			if (str[i] > '0' && str[i] < '9' )
+			if (str[i] >= '0' && str[i] <= '9' )
 				count++;
 			else
 				return (0);

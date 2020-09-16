@@ -6,7 +6,7 @@
 /*   By: vfurmane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 08:16:00 by vfurmane          #+#    #+#             */
-/*   Updated: 2020/09/16 14:04:13 by vfurmane         ###   ########.fr       */
+/*   Updated: 2020/09/16 17:44:28 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int			ft_solve(int **board, int ***args, int row, int s_col, int *size, int num)
 		ft_put_block(board, args[1][row][num], row, col);
 		if (row < size[1] - 1 || args[1][row][num + 1] != 0)
 		{
-			if (ft_precheck_board(board, args, size) && ft_solve(board, args, row + (args[1][row][num + 1] == 0),
+			if (ft_precheck_board(board, args, size, row) && ft_solve(board, args, row + (args[1][row][num + 1] == 0),
 				(args[1][row][num + 1] == 0) ? 0 : col, size,
 				(args[1][row][num + 1] == 0) ? 0 : num + 1))
 				return (1);
