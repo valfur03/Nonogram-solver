@@ -6,7 +6,7 @@
 /*   By: vfurmane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 08:16:00 by vfurmane          #+#    #+#             */
-/*   Updated: 2020/09/16 17:44:28 by vfurmane         ###   ########.fr       */
+/*   Updated: 2020/09/17 10:59:33 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		ft_put_board(int **board, int *size)
 	{
 		j = 0;
 		while (j < size[0])
-			write(1, ((board[i][j++]) ?  "#": "."), 1);
+			write(1, ((board[i][j++]) ?  "# ": ". "), 2);
 		write(1, "\n", 1);
 		i++;
 	}
