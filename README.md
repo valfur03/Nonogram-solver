@@ -68,6 +68,22 @@ And here is the output.
 
 `#` are filled cells, `.` are empty cells.
 
+###	Docker
+
+I made a `Dockerfile` for this project. I believe that it is good, but this is my first one. Here is how to use it.
+
+First, build the container.
+
+```shell
+docker build -t nonogram-solver .
+```
+
+Then, run the container with the parameter.
+
+```shell
+docker run nonogram-solver:latest "5 5 2 3 1,1,1 3 2 1,1 1 3 1,2 4"
+```
+
 ##	Speed tests
 
 I made some speed tests according to the size of the grid with an `i7-1065G7` CPU.
